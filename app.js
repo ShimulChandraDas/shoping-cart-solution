@@ -1,20 +1,32 @@
-function updateCaseCount(isIncresing) {
-    const caseInput = document.getElementById('case-count');
-    let caseCount = caseInput.value;
+// Calculation total
+function updateProductCount(product, price, isIncresing) {
+    const productInput = document.getElementById(product + '-count');
+    let productCount = productInput.value;
     if (isIncresing == true) {
-        caseCount = parseInt(caseCount) + 1;
-    } else if (caseCount > 0) {
-        caseCount = parseInt(caseCount) - 1;
+        productCount = parseInt(productCount) + 1;
+    } else if (productCount > 0) {
+        productCount = parseInt(productCount) - 1;
     }
-    caseInput.value = caseCount
+    productInput.value = productCount
 
-    // Update Case Total
-    const caseTotal = document.getElementById('case-total');
-    caseTotal.innerText = caseCount * 59;
+    // Update Total
+    const productTotal = document.getElementById(product + '-total');
+    productTotal.innerText = productCount * price;
 };
+
+
+// phone increse & Decrtese
+document.getElementById('phone-plus').addEventListener('click', function () {
+    updateProductCount('phone', 1219, true);
+});
+document.getElementById('phone-minus').addEventListener('click', function () {
+    updateProductCount('phone', 1219, false);
+});
+
+// case increse & Decrtese
 document.getElementById('case-plus').addEventListener('click', function () {
-    updateCaseCount(true);
+    updateProductCount('case', 59, true);
 });
 document.getElementById('case-minus').addEventListener('click', function () {
-    updateCaseCount(false)
+    updateProductCount('case', 59, false)
 });
